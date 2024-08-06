@@ -28,7 +28,7 @@ public final class Util {
 
     public static List<String> readInput() {
         try {
-            return Files.readAllLines(Path.of("input.txt"));
+            return Files.readAllLines(Path.of("./src/main/resources/input.txt"));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
