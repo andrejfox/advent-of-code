@@ -8,7 +8,8 @@ public class Data {
      static final Map<Integer, Day[]> YEARS = java.util.Map.of(
             2015, new Day[]{
                      new Day1(),
-                     new Day2()
+                     new Day2(),
+                     new Day3()
             }
     );
 }
