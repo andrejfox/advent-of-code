@@ -35,5 +35,42 @@ public class Day3 implements Day {
     }
 
     @Override
-    public void part2() {}
+    public void part2() {
+        int w = 0;
+        int z = 0;
+
+        visited.add(new cord(0, 0));
+        for (int i = 0; i < instructions.length; i++) {
+            if (i % 2 == 0) {
+                switch (instructions[i]) {
+                    case '>' -> x++;
+                    case '<' -> x--;
+                    case '^' -> y++;
+                    case 'v' -> y--;
+                    default -> {
+                        System.out.println("Invalid input!");
+                        return;
+                    }
+                }
+                if (!visited.contains(new cord(x, y))) {
+                    visited.add(new cord(x, y));
+                }
+            } else {
+                switch (instructions[i]) {
+                    case '>' -> w++;
+                    case '<' -> w--;
+                    case '^' -> z++;
+                    case 'v' -> z--;
+                    default -> {
+                        System.out.println("Invalid input!");
+                        return;
+                    }
+                }
+                if (!visited.contains(new cord(w, z))) {
+                    visited.add(new cord(w, z));
+                }
+            }
+        }
+        System.out.println(visited.size());
+    }
 }
