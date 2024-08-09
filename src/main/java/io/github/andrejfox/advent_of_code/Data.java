@@ -9,7 +9,8 @@ public class Data {
             2015, new Day[]{
                      new Day1(),
                      new Day2(),
-                     new Day3()
+                     new Day3(),
+                     new Day4()
             }
     );
 }
