@@ -20,7 +20,13 @@ public class Day5 implements Day {
 
     @Override
     public void part2() {
-
+        int count = 0;
+        for (String element : input) {
+            if (hasTwoDoubles(element) && repeatsOverLetter(element)) {
+                count++;
+            }
+        }
+        System.out.println(count);
     }
 
     private boolean hasDouble(String input) {
@@ -60,4 +66,33 @@ public class Day5 implements Day {
         return !input.contains("xy");
     }
 
+    private boolean hasTwoDoubles(String input) {
+        if (input.length() < 4) {
+            return false;
+        }
+
+        for (int targetIndex = 0; targetIndex < input.length() - 1; targetIndex++) {
+            String targetString = String.valueOf(input.charAt(targetIndex)) + input.charAt(targetIndex + 1);
+            for (int testIndex = 0; testIndex < input.length() - 1; testIndex++) {
+                if (testIndex == targetIndex || testIndex - 1 == targetIndex || testIndex + 1 == targetIndex) {
+                    continue;
+                }
+
+                String testString = String.valueOf(input.charAt(testIndex)) + input.charAt(testIndex + 1);
+                if (targetString.equals(testString)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean repeatsOverLetter(String input) {
+        for (int i = 2; i < input.length(); i++) {
+            if (input.charAt(i - 2) == input.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
